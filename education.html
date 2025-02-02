@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Education</title>
+</head>
+<body>
+    <h1 id="title"></h1>
+    <p id="description"></p>
+    <h2>Tips:</h2>
+    <ul id="tips"></ul>
+
+    <script>
+        async function fetchEducationContent() {
+            const response = await fetch('/education');
+            const data = await response.json();
+            document.getElementById('title').innerText = data.title;
+            document.getElementById('description').innerText = data.description;
+            const tipsList = document.getElementById('tips');
+            data.tips.forEach(tip => {
+                const li = document.createElement('li');
+                li.innerText = tip;
+                tipsList.appendChild(li);
+            });
+        }
+        fetchEducationContent();
+    </script>
+</body>
+</html>

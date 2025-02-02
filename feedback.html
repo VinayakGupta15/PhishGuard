@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+</head>
+<body>
+    <h1>Chatbot Feedback</h1>
+    <form id="feedbackForm">
+        <label for="message">Chatbot Response:</label>
+        <input type="text" id="message" name="message" required>
+        <label for="helpful">Was this helpful?</label>
+        <select id="helpful" name="helpful" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <script>
+        document.getElementById('feedbackForm').onsubmit = async function(event) {
+            event.preventDefault();
+            const response = await fetch('/feedback', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: document.getElementById('message').value,
+                    helpful: document.getElementById('helpful').value
+                })
+            });
+            const result = await response.json();
+            alert(result.message);
+        };
+    </script>
+</body>
+</html>

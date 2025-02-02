@@ -1,0 +1,10 @@
+Phishing-Detection-Chatbot/
+│
+├── app.py                          # Streamlit interface for the chatbot
+├── phishing_data_preparation.py    # Data preparation script
+├── phishing_model_training.py      # Model training script
+├── requirements.txt                # Python dependencies
+├── tfidf_vectorizer.pkl            # Saved vectorizer (auto-generated after running scripts)
+├── phishing_model.pkl              # Saved model (auto-generated after running scripts)
+├── dataset.csv                     # Sample dataset (replace with your data)
+└── README.md                       # Project instructions
